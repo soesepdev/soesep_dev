@@ -14,41 +14,35 @@
     body, html {
       height: 100%;
       font-family: sans-serif;
-      overflow-x: hidden;
+      overflow: hidden;
+    }
+
+    .wave-bg {
+      position: fixed;
+      width: 200%;
+      height: 200%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      animation: moveWaves 20s linear infinite;
+      background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><path fill="%23c3cfe2" fill-opacity="0.6" d="M0,160 C480,280 720,40 1200,160 L1200,0 L0,0 Z"/></svg>') repeat;
+      background-size: cover;
+    }
+
+    @keyframes moveWaves {
+      0% { transform: translate(-25%, -25%) rotate(0deg); }
+      100% { transform: translate(-25%, -25%) rotate(360deg); }
     }
 
     .coming-soon {
-      position: relative;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       text-align: center;
-      padding-top: 2rem;
       flex-direction: column;
-    }
-
-    .wave {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 120px;
-      overflow: hidden;
-      line-height: 0;
-    }
-
-    .wave svg {
-      position: relative;
-      display: block;
-      width: 200%;
-      height: 120px;
-      animation: waveMove 10s linear infinite;
-    }
-
-    @keyframes waveMove {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      color: #333;
+      padding: 1rem;
     }
 
     .fade-in {
@@ -120,6 +114,8 @@
   </style>
 </head>
 <body>
+  <div class="wave-bg"></div>
+
   <section class="coming-soon">
     <h1 class="fade-in delay-1" style="font-size: 4rem; font-weight: bold; margin-bottom: 1rem;">Coming Soon</h1>
     <p class="fade-in delay-2" style="font-size: 1.25rem; margin-bottom: 2rem;">Stay tuned!</p>
@@ -148,12 +144,6 @@
       <a href="#">🐦</a>
       <a href="#">📸</a>
       <a href="#">💼</a>
-    </div>
-
-    <div class="wave">
-      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0 C300,100 900,0 1200,100 L1200,0 L0,0 Z" fill="#ffffff"></path>
-      </svg>
     </div>
   </section>
 
