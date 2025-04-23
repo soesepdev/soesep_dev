@@ -11,27 +11,32 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
       height: 100%;
       font-family: sans-serif;
       overflow: hidden;
     }
 
-    .wave-bg {
-      position: fixed;
-      width: 200%;
-      height: 200%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      animation: moveWaves 20s linear infinite;
-      background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><path fill="%23c3cfe2" fill-opacity="0.6" d="M0,160 C480,280 720,40 1200,160 L1200,0 L0,0 Z"/></svg>') repeat;
-      background-size: cover;
+    body {
+      position: relative;
+      background: #f5f7fa;
     }
 
-    @keyframes moveWaves {
-      0% { transform: translate(-25%, -25%) rotate(0deg); }
-      100% { transform: translate(-25%, -25%) rotate(360deg); }
+    .wave-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 400%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23c3cfe2" fill-opacity="0.4" d="M0,160L60,149.3C120,139,240,117,360,133.3C480,149,600,203,720,208C840,213,960,171,1080,154.7C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>') repeat-x;
+      background-size: cover;
+      z-index: -1;
+      animation: waveMove 20s linear infinite;
+    }
+
+    @keyframes waveMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .coming-soon {
@@ -43,6 +48,8 @@
       flex-direction: column;
       color: #333;
       padding: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
     .fade-in {
@@ -114,7 +121,8 @@
   </style>
 </head>
 <body>
-  <div class="wave-bg"></div>
+
+  <div class="wave-layer"></div>
 
   <section class="coming-soon">
     <h1 class="fade-in delay-1" style="font-size: 4rem; font-weight: bold; margin-bottom: 1rem;">Coming Soon</h1>
