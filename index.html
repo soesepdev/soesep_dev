@@ -146,13 +146,6 @@
         <p>Seconds</p>
       </div>
     </div>
-
-    <div class="social-icons">
-      <a href="#">🌐</a>
-      <a href="#">🐦</a>
-      <a href="#">📸</a>
-      <a href="#">💼</a>
-    </div>
   </section>
 
   <script>
@@ -177,6 +170,29 @@
         document.querySelector(".countdown").innerHTML = "EXPIRED";
       }
     }, 1000);
+
+    function createFaviconWithText(text) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 32;
+      canvas.height = 32;
+      const ctx = canvas.getContext('2d');
+      
+      ctx.fillStyle = '#fff'; 
+      ctx.fillRect(0, 0, 32, 32);
+      ctx.fillStyle = '#000'; 
+      ctx.font = 'bold 16px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, 16, 16);
+
+      const favicon = canvas.toDataURL('image/png');
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.href = favicon;
+      document.head.appendChild(link);
+    }
+
+    createFaviconWithText('👋');
   </script>
 </body>
 </html>
