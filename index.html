@@ -41,8 +41,14 @@
     .wave svg {
       position: relative;
       display: block;
-      width: calc(200% + 1.3px);
+      width: 200%;
       height: 120px;
+      animation: waveMove 10s linear infinite;
+    }
+
+    @keyframes waveMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .fade-in {
