@@ -1,9 +1,112 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
   <head>
-    <title>Soesep Dev</title>
+    <title>👋 Soesep Dev</title>
+    <style>
+      .coming-soon {
+          background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      }
+      
+      .countdown h2 {
+          position: relative;
+      }
+      
+      .countdown h2::after {
+          content: ':';
+          position: absolute;
+          right: -15px;
+          top: 50%;
+          transform: translateY(-50%);
+      }
+      
+      .countdown div:last-child h2::after {
+          display: none;
+      }
+      
+      .social-icons a {
+          transition: opacity 0.3s ease;
+      }
+      
+      .social-icons a:hover {
+          opacity: 0.7;
+      }
+    </style>
   </head>
   <body>
-    <h1>👋 Website Under Construction!</h1>
+    <section class="coming-soon vh-100 d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+            <h1 class="display-1 fw-bold mb-4">Coming Soon</h1>
+            <p class="lead mb-5">We're working hard to bring you something amazing. Stay tuned!</p>
+            
+            <div class="countdown d-flex justify-content-center mb-5">
+              <div class="px-3">
+                <h2 id="days" class="display-4 fw-bold">00</h2>
+                <p>Days</p>
+              </div>
+              <div class="px-3">
+                <h2 id="hours" class="display-4 fw-bold">00</h2>
+                <p>Hours</p>
+              </div>
+              <div class="px-3">
+                <h2 id="minutes" class="display-4 fw-bold">00</h2>
+                <p>Minutes</p>
+              </div>
+              <div class="px-3">
+                <h2 id="seconds" class="display-4 fw-bold">00</h2>
+                <p>Seconds</p>
+              </div>
+            </div>
+            
+            <form class="d-flex justify-content-center">
+              <div class="input-group mb-3 w-75">
+                <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" aria-describedby="button-addon2">
+                <button class="btn btn-primary" type="button" id="button-addon2">Notify Me</button>
+              </div>
+            </form>
+            
+            <div class="social-icons mt-5">
+              <a href="#" class="text-dark mx-2"><i class="bi bi-facebook fs-4"></i></a>
+              <a href="#" class="text-dark mx-2"><i class="bi bi-twitter fs-4"></i></a>
+              <a href="#" class="text-dark mx-2"><i class="bi bi-instagram fs-4"></i></a>
+              <a href="#" class="text-dark mx-2"><i class="bi bi-linkedin fs-4"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Set the date we're counting down to
+      const countDownDate = new Date("May 20, 2025 00:00:00").getTime();
+      
+      // Update the count down every 1 second
+      const x = setInterval(function () {
+          // Get today's date and time
+          const now = new Date().getTime();
+      
+          // Find the distance between now and the count down date
+          const distance = countDownDate - now;
+      
+          // Time calculations for days, hours, minutes and seconds
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+          // Display the result
+          document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+          document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+          document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+          document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+      
+          // If the count down is finished, write some text
+          if (distance < 0) {
+              clearInterval(x);
+              document.querySelector(".countdown").innerHTML = "EXPIRED";
+          }
+      }, 1000);
+    </script>
   </body>
 </html>
