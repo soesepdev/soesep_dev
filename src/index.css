@@ -1,0 +1,112 @@
+* {
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.logo-text {
+	font-size: 22px;
+}
+
+body, .navbar {
+	transition: background-color 0.5s ease;
+}
+
+.container.header {
+	padding-left: 125px;
+	padding-right: 125px;
+}
+
+section.welcome {
+	margin-top: 150px;
+	margin-bottom: 100px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+section.project{
+	margin-bottom: 150px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+section.footer{
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+section.project-detail{
+	margin-top: 40px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+img.profile-image {
+	width: 90%;
+	height: auto;
+	padding:4px;
+	margin-top: 5px;
+	border-radius: 20px;
+	box-shadow: 6px 6px #367DB5;
+}
+
+@media (max-width: 992px) {
+	img.profile-image{
+		display: none;
+	}
+}
+
+@media (max-width: 768px) {
+
+	section.welcome {
+		margin-top: 100px;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	section.project{
+		margin-bottom: 150px;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	section.footer{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	section.project-detail{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	.container.header {
+		padding-left: 28px;
+		padding-right: 28px;
+	}
+}
+
+.dark-mode {
+	padding-top: 6px;
+	padding-bottom: 1px;
+	border-radius: 12px;
+}
+
+.rounded, .btn {
+	border-radius: 12px !important;	
+}
+
+.profile-name {
+	color: #367DB5;
+}
+
+.card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.04);
+}
+
+.cofee {
+	font-size: 20px;
+	color: #F0AA32;
+}

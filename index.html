@@ -1,176 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome - Soesep Dev</title>
-  <link rel="icon" href="https://png.pngtree.com/png-vector/20230824/ourmid/pngtree-yellow-laptop-icon-on-a-white-background-vector-png-image_6920897.png" type="image/png">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    html, body {
-      height: 100%;
-      font-family: sans-serif;
-      overflow: hidden;
-    }
+    <meta name="description" content="Profile Website Susep Dev">
+    <meta name="keywords" content="Portfolio">
+    <meta name="author" content="Susep Dev">
 
-    body {
-      position: relative;
-      background: #f5f7fa;
-    }
+    <meta property="og:title" content="Profile Website: Susep Dev">
+    <meta property="og:description" content="Profile Website Abdi Susep">
 
-    .wave-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 400%;
-      height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23c3cfe2" fill-opacity="0.4" d="M0,160L60,149.3C120,139,240,117,360,133.3C480,149,600,203,720,208C840,213,960,171,1080,154.7C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>') repeat-x;
-      background-size: cover;
-      z-index: -1;
-      animation: waveMove 20s linear infinite;
-    }
+    <title>#susep.dev</title>
 
-    @keyframes waveMove {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .coming-soon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      flex-direction: column;
-      color: #333;
-      padding: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .fade-in {
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-    }
-
-    .delay-1 { animation-delay: 0.5s; }
-    .delay-2 { animation-delay: 1s; }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 2rem;
-    }
-
-    .countdown h2 {
-      font-size: 3rem;
-      font-weight: bold;
-      animation: popIn 0.6s ease-in-out forwards;
-      opacity: 0;
-      transform: scale(0.5);
-      position: relative;
-    }
-
-    .countdown div p {
-      margin-top: 0.5rem;
-    }
-
-    @keyframes popIn {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .countdown h2::after {
-      content: ':';
-      position: absolute;
-      right: -15px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .countdown div:last-child h2::after {
-      display: none;
-    }
-
-    .social-icons {
-      margin-top: 2rem;
-    }
-
-    .social-icons a {
-      text-decoration: none;
-      color: #333;
-      font-size: 1.5rem;
-      margin: 0 10px;
-      transition: opacity 0.3s ease;
-    }
-
-    .social-icons a:hover {
-      opacity: 0.7;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="wave-layer"></div>
-
-  <section class="coming-soon">
-    <h1 class="fade-in delay-1" style="font-size: 4rem; font-weight: bold; margin-bottom: 1rem;">Coming Soon</h1>
-    <p class="fade-in delay-2" style="font-size: 1.25rem; margin-bottom: 2rem;">Stay tuned!</p>
-
-    <div class="countdown">
-      <div>
-        <h2 id="days">00</h2>
-        <p>Days</p>
-      </div>
-      <div>
-        <h2 id="hours">00</h2>
-        <p>Hours</p>
-      </div>
-      <div>
-        <h2 id="minutes">00</h2>
-        <p>Minutes</p>
-      </div>
-      <div>
-        <h2 id="seconds">00</h2>
-        <p>Seconds</p>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    const countDownDate = new Date("May 20, 2025 00:00:00").getTime();
-
-    const x = setInterval(function () {
-      const now = new Date().getTime();
-      const distance = countDownDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-      document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-      document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-      document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
-
-      if (distance < 0) {
-        clearInterval(x);
-        document.querySelector(".countdown").innerHTML = "EXPIRED";
-      }
-    }, 1000);
-  </script>
-</body>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
