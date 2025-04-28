@@ -19,6 +19,9 @@ const Welcome = () => {
   const [loadingSocial, setLoadingSocial] = useState(true);
   const imageProfile = './profile.jpg';
 
+  const skeletonBaseColor = darkMode ? '#444' : '#ddd'; 
+  const skeletonHighlightColor = darkMode ? '#555' : '#eee';
+
   useEffect(() => {
     fetchProfile();
     fetchSocial();
@@ -57,7 +60,7 @@ const Welcome = () => {
           <div className="col-lg-3 col-12 pt-1"> 
             { 
               loadingProfile ? (
-                <Skeleton height={200} width='100%' className='profile-image' />
+                <Skeleton height={200} width='100%' className='profile-image' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} />
               ) : (
                 <img src={imageProfile} className="profile-image fade-in" />
               )
@@ -68,7 +71,7 @@ const Welcome = () => {
               <h1 className="m-0 mt-2 mb-3 fs-3">
                 {
                   loadingProfile ? (
-                    <Skeleton height={35} width='60%' />
+                    <Skeleton height={35} width='60%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} />
                   ) : (
                     <>
                       <span className="me-2">👋</span>
@@ -77,16 +80,15 @@ const Welcome = () => {
                     </>
                   )
                 }
-                
               </h1>
 
               <h4 className={ (darkMode ? 'text-white' : 'text-dark') + ' mb-2'}>
                 {
                   loadingProfile ? (
                     <>
-                      <Skeleton height={20} width='90%' />
-                      <Skeleton height={20} width='100%' />
-                      <Skeleton height={20} width='70%' />
+                      <Skeleton height={20} width='90%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} />
+                      <Skeleton height={20} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} />
+                      <Skeleton height={20} width='70%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} />
                     </>
                   ) : (
                     <>
@@ -101,7 +103,7 @@ const Welcome = () => {
               <div>
                 {
                   loadingSocial ? (
-                    <Skeleton height={30} width='30%' />
+                    <Skeleton height={30} width='30%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} />
                   ) : (
                     <>
                       {
@@ -110,7 +112,7 @@ const Welcome = () => {
                             <Link to={ soc.url } target='_blank'>
                               <box-icon type={ soc.type } name={ soc.icon } size='md' color={ darkMode ? '#ffffff' : soc.color }></box-icon>
                             </Link>
-                        </span>
+                          </span>
                         ))
                       }
                     </>
