@@ -2,14 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { darkModeState, categoryState, projectState  } from '../state/atoms';
+import { 
+  darkModeState, 
+  // categoryState, 
+  // projectState  
+} from '../state/atoms';
 
 const Project = () => {
   const darkMode = useRecoilValue(darkModeState);
-  const [category, setCategory] = useRecoilState(categoryState);
-  const [project, setProject] = useRecoilState(projectState);
+  // const [category, setCategory] = useRecoilState(categoryState);
+  // const [project, setProject] = useRecoilState(projectState);
 
-  const [categoryActive, setCategoryActive] = useState('*');
+  // const [categoryActive, setCategoryActive] = useState('*');
 
   useEffect(() => {
     // fetchDataCategory();
@@ -38,8 +42,8 @@ const Project = () => {
   };
 
   const filterDataProject= async (id) => {
-    setCategoryActive(id);
-    fetchDataProject()
+    // setCategoryActive(id);
+    // fetchDataProject()
   }
 
   return (
@@ -69,7 +73,7 @@ const Project = () => {
 
           <div className="col-lg-12">
             <div className="row">
-              {
+              {/* {
                 project.map((prj) => {
 
                 return (
@@ -114,7 +118,7 @@ const Project = () => {
                   </div>
                 </div>
                 )})
-              }
+              } */}
             </div>
           </div>
         </div>

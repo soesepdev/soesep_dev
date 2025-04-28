@@ -2,36 +2,51 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { darkModeState, skillState, socialState  } from '../state/atoms';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
+import { 
+  darkModeState, 
+  profileState, 
+  socialState
+} from '../state/atoms';
 
 const Welcome = () => {
   const darkMode = useRecoilValue(darkModeState);
-  const [skill, setSkill] = useRecoilState(skillState);
+  const [profile, setProfile] = useRecoilState(profileState);
   const [social, setSocial] = useRecoilState(socialState);
+  const [loadingProfile, setLoadingProfile] = useState(true);
+  const [loadingSocial, setLoadingSocial] = useState(true);
   const imageProfile = './profile.jpg';
 
   useEffect(() => {
-    // fetchDataSkill();
-    // fetchDataSocial();
+    fetchProfile();
+    fetchSocial();
   }, []);
 
-  const fetchDataSkill = async () => {
+  const fetchProfile = async () => {
     try {
-      const response = await fetch('https://api.abdisusep.my.id/api/skills');
-      const data = await response.json();
-      setSkill(data);
-    } catch (error) {
-      console.error('Error fetching skills data:', error);
+      // const response = await fetch(`${process.env.REACT_APP_API_URL}/profile`);
+      const response = await fetch(`https://api.soesepdev.my.id/profile`);
+      const result = await response.json();
+      setProfile(result.data);
+    } catch (err) {
+      console.error('Error fetching profile data:', err);
+    } finally {
+      setLoadingProfile(false);
     }
   };
 
-  const fetchDataSocial = async () => {
+  const fetchSocial = async () => {
     try {
-      const response = await fetch('https://api.abdisusep.my.id/api/socials');
-      const data = await response.json();
-      setSocial(data);
-    } catch (error) {
-      console.error('Error fetching socials data:', error);
+      // const response = await fetch(`${process.env.REACT_APP_API_URL}/social`);
+      const response = await fetch(`https://api.soesepdev.my.id/social`);
+      const result = await response.json();
+      setSocial(result.data);
+    } catch (err) {
+      console.error('Error fetching social data:', err);
+    } finally {
+      setLoadingSocial(false);
     }
   };
 
@@ -39,52 +54,68 @@ const Welcome = () => {
     <section className="welcome">
       <div className="container">
         <div className="row">
-          <div className="col-lg-3 col-12">
-            <img src={ imageProfile } className="profile-image"/>
+          <div className="col-lg-3 col-12 pt-1"> 
+            { 
+              loadingProfile ? (
+                <Skeleton height={200} width='100%' className='profile-image' />
+              ) : (
+                <img src={imageProfile} className="profile-image" />
+              )
+            }
           </div>
           <div className="col-lg-9 col-12">
             <div>
-
               <h1 className="m-0 mt-2 mb-3 fs-3">
-                <span className="me-2">👋</span>
-                <span className={ (darkMode ? 'text-white' : 'text-dark') + ' fw-normal'}>Hello there, i'm </span>
-                <span className="fw-normal profile-name">#soesep.dev</span>
+                {
+                  loadingProfile ? (
+                    <Skeleton height={35} width='60%' />
+                  ) : (
+                    <>
+                      <span className="me-2">👋</span>
+                      <span className={ (darkMode ? 'text-white' : 'text-dark') + ' fw-normal'}>Hello there, i'm </span>
+                      <span className="fw-normal profile-name">{profile.name}</span>
+                    </>
+                  )
+                }
+                
               </h1>
 
               <h4 className={ (darkMode ? 'text-white' : 'text-dark') + ' mb-2'}>
-                <span className="fw-normal me-2 fs-5">I'm a</span>
-                <span className="fw-normal me-2 fs-5 bg-warning">Software Engineer</span>
-                <span className="fw-normal fs-5">with more than 3 years of experience in designing and developing responsive websites and web-based applications. Proficient in frontend and backend technologies, and strong problem-solving skills.</span>
-                <div className="mt-2">
                 {
-                  skill.map(skl => (
-                    <img key={skl.id} className="px-2" src={skl.image} width="45" alt={skl.name} />
-                  ))
+                  loadingProfile ? (
+                    <>
+                      <Skeleton height={20} width='90%' />
+                      <Skeleton height={20} width='100%' />
+                      <Skeleton height={20} width='70%' />
+                    </>
+                  ) : (
+                    <>
+                      <span className="fw-normal me-2 fs-5">I'm a</span>
+                      <span className="fw-normal me-2 fs-5 bg-warning">{profile.title}</span>
+                      <span className="fw-normal fs-5">{profile.description}</span>
+                    </>
+                  )
                 }
-                </div>
               </h4>
 
               <div>
-                <span className="me-2">
-                    <Link to='https://www.soesepdev.my.id/' target='_blank'>
-                      <box-icon name='envelope' size='md' color={ darkMode ? '#ffffff' : '#D93025'}></box-icon>
-                    </Link>
-                </span>
-                <span className="me-2">
-                    <Link to='https://www.soesepdev.my.id/' target='_blank'>
-                      <box-icon type='logo' name='linkedin-square' size='md' color={ darkMode ? '#ffffff' : '#0077B5'}></box-icon>
-                    </Link>
-                </span>
-                <span className="me-2">
-                    <Link to='https://www.soesepdev.my.id/' target='_blank'>
-                      <box-icon type='logo' name='instagram-alt' size='md' color={ darkMode ? '#ffffff' : '#E4405F'}></box-icon>
-                    </Link>
-                </span>
-                <span className="me-2">
-                    <Link to='https://www.soesepdev.my.id/' target='_blank'>
-                      <box-icon type='logo' name='github' size='md' color={ darkMode ? '#ffffff' : '#181717'}></box-icon>
-                    </Link>
-                </span>
+                {
+                  loadingSocial ? (
+                    <Skeleton height={30} width='30%' />
+                  ) : (
+                    <>
+                      {
+                        social.map(soc => (
+                          <span className="me-2">
+                            <Link to={ soc.url } target='_blank'>
+                              <box-icon type={ soc.type } name={ soc.icon } size='md' color={ darkMode ? '#ffffff' : soc.color }></box-icon>
+                            </Link>
+                        </span>
+                        ))
+                      }
+                    </>
+                  )
+                }
               </div>
             </div>
           </div>
