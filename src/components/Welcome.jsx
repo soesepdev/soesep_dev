@@ -59,7 +59,7 @@ const Welcome = () => {
               loadingProfile ? (
                 <Skeleton height={200} width='100%' className='profile-image' />
               ) : (
-                <img src={imageProfile} className="profile-image" />
+                <img src={imageProfile} className="profile-image fade-in" />
               )
             }
           </div>
@@ -72,8 +72,8 @@ const Welcome = () => {
                   ) : (
                     <>
                       <span className="me-2">👋</span>
-                      <span className={ (darkMode ? 'text-white' : 'text-dark') + ' fw-normal'}>Hello there, i'm </span>
-                      <span className="fw-normal profile-name">{profile.name}</span>
+                      <span className={ (darkMode ? 'text-white' : 'text-dark') + ' fw-normal fade-in'}>Hello there, i'm </span>
+                      <span className="fw-normal profile-name fade-in">{profile.name}</span>
                     </>
                   )
                 }
@@ -90,9 +90,9 @@ const Welcome = () => {
                     </>
                   ) : (
                     <>
-                      <span className="fw-normal me-2 fs-5">I'm a</span>
-                      <span className="fw-normal me-2 fs-5 bg-warning">{profile.title}</span>
-                      <span className="fw-normal fs-5">{profile.description}</span>
+                      <span className="fw-normal me-2 fs-5 fade-in">I'm a</span>
+                      <span className="fw-normal me-2 fs-5 bg-warning fade-in">{profile.title}</span>
+                      <span className="fw-normal fs-5 fade-in">{profile.description}</span>
                     </>
                   )
                 }
@@ -106,7 +106,7 @@ const Welcome = () => {
                     <>
                       {
                         social.map(soc => (
-                          <span className="me-2">
+                          <span className="me-2 fade-in">
                             <Link to={ soc.url } target='_blank'>
                               <box-icon type={ soc.type } name={ soc.icon } size='md' color={ darkMode ? '#ffffff' : soc.color }></box-icon>
                             </Link>
