@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import Skeleton from 'react-loading-skeleton'
 
 import { 
   darkModeState, 
@@ -14,6 +15,8 @@ const Project = () => {
   // const [project, setProject] = useRecoilState(projectState);
 
   // const [categoryActive, setCategoryActive] = useState('*');
+  const skeletonBaseColor = darkMode ? '#444' : '#ddd'; 
+  const skeletonHighlightColor = darkMode ? '#555' : '#eee';
 
   useEffect(() => {
     // fetchDataCategory();
@@ -54,14 +57,16 @@ const Project = () => {
           <div className="col-lg-12 mb-3">
             <h4 className={ darkMode ? 'text-white' : 'text-dark' + ' fw-normal'}>
               {/* <box-icon name='folder' color={ darkMode ? '#fff' : '#2b3137'}></box-icon> */}
-              <span className=''>Projects</span>
+              {/* <span className=''>Projects</span> <br /> */}
+              <Skeleton height={30} width='20%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
             </h4>
           </div>
           <div className="col-lg-12">
             <div className="row">
 
               <div className="col-sm-4 mb-3" key='1'>
-                <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
+                {/* <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
                   
                   <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
                     <div className='mb-2'>
@@ -83,11 +88,12 @@ const Project = () => {
                     </div>
                   </div>
                   
-                </div>
+                </div> */}
               </div>
 
               <div className="col-sm-4 mb-3" key='1'>
-                <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
+                {/* <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
                   
                   <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
                     <div className='mb-2'>
@@ -95,7 +101,7 @@ const Project = () => {
                       <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
                     </div>
                     <div>
-                      <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>Project 2</h5>
+                      <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>Project 1</h5>
                     </div>
                     <div className='mb-2'>
                       <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
@@ -109,11 +115,12 @@ const Project = () => {
                     </div>
                   </div>
                   
-                </div>
+                </div> */}
               </div>
 
               <div className="col-sm-4 mb-3" key='1'>
-                <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
+                {/* <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
                   
                   <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
                     <div className='mb-2'>
@@ -121,7 +128,7 @@ const Project = () => {
                       <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
                     </div>
                     <div>
-                      <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>Project 3</h5>
+                      <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>Project </h5>
                     </div>
                     <div className='mb-2'>
                       <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
@@ -135,7 +142,7 @@ const Project = () => {
                     </div>
                   </div>
                   
-                </div>
+                </div> */}
               </div>
 
             </div>
