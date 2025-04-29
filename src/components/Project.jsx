@@ -51,74 +51,93 @@ const Project = () => {
       <div className="container">
         <div className="row">
 
-          {/* <div className="col-lg-12 mb-4">
-            <h3 className={ darkMode ? 'text-white' : 'text-dark' + ' fw-normal'}>Projects</h3>
-          </div> */}
-
-          {/* <div className="col-lg-12 mb-4">
-            {
-              darkMode ?
-              <button className={ (categoryActive=='*' ? 'btn btn-primary' : 'btn btn-light') + ' px-3 me-2 mb-2'} onClick={ () => filterDataProject('*') }>All</button> :
-              <button className={ (categoryActive=='*' ? 'btn btn-dark' : 'btn btn-light') + ' px-3 me-2 mb-2'} onClick={ () => filterDataProject('*') }>All</button>
-            }
-
-            {
-              category.map((ctg) => (
-                darkMode ? 
-                <button className={ (categoryActive==ctg.id ? 'btn btn-primary' : 'btn btn-light') + ' px-3 me-2 mb-2' } onClick={ () => filterDataProject(ctg.id) } key={ctg.id}>{ ctg.name }</button> :
-                <button className={ (categoryActive==ctg.id ? 'btn btn-dark' : 'btn btn-light') + ' px-3 me-2 mb-2' } onClick={ () => filterDataProject(ctg.id) } key={ctg.id}>{ ctg.name }</button>
-              ))
-            }
-          </div> */}
-
+          <div className="col-lg-12 mb-3">
+            <h4 className={ darkMode ? 'text-white' : 'text-dark' + ' fw-normal'}>
+              {/* <box-icon name='folder' color={ darkMode ? '#fff' : '#2b3137'}></box-icon> */}
+              <span className=''>Projects</span>
+            </h4>
+          </div>
           <div className="col-lg-12">
             <div className="row">
-              {/* {
-                project.map((prj) => {
 
-                return (
-                <div className="col-sm-4 mb-3" key={prj.id}>
-                  <div className={'card border-0 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
-                    <Link to={ prj.url } target="_blank">
-                      <img src={prj.image} className="card-img-top rounded" alt={prj.title} />
-                    </Link>
-
-                    <div className={'card-body px-0 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
-                      {
-                        prj.project_skills.length > 0 ?
-                        <div className="mb-3">
-                          {
-                            prj.project_skills.map((pskill) => {
-                              return (
-                                <img className="me-2" src={ pskill.skill.image } width="30" alt={ pskill.skill.name } />
-                              )
-                            })
-                          }
-                          
-                        </div>
-                        : false
-                      }
-
-                      
-
-                      <Link to={ prj.url } className="text-dark text-decoration-none" target="_blank">
-                        <h5 className={ 'card-title ' + (darkMode ? 'text-white' : 'text-dark') }>{prj.title}</h5>
+              <div className="col-sm-4 mb-3" key='1'>
+                <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                  
+                  <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                    <div className='mb-2'>
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" className="me-2" width={25} />
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
+                    </div>
+                    <div>
+                      <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>Project 1</h5>
+                    </div>
+                    <div className='mb-2'>
+                      <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper ligula a bibendum rutrum...
+                      </span>
+                    </div>
+                    <div>
+                      <Link to='/' className='text-decoration-none text-dark'>
+                        <box-icon name='link-alt' size='sm'></box-icon>
                       </Link>
-
-                      <p className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>{prj.description.slice(0, 80) + '...'}</p>
-                      {
-                        prj.github ?
-                        <Link to={ prj.github } target="_blank">
-                          <box-icon type='logo' name='github' size='sm' color={ darkMode ? '#ffffff' : '#2b3137' }></box-icon>
-                        </Link>
-                        : false
-                      }
-                      
                     </div>
                   </div>
+                  
                 </div>
-                )})
-              } */}
+              </div>
+
+              <div className="col-sm-4 mb-3" key='1'>
+                <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                  
+                  <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                    <div className='mb-2'>
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" className="me-2" width={25} />
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
+                    </div>
+                    <div>
+                      <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>Project 2</h5>
+                    </div>
+                    <div className='mb-2'>
+                      <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper ligula a bibendum rutrum...
+                      </span>
+                    </div>
+                    <div>
+                      <Link to='/' className='text-decoration-none text-dark'>
+                        <box-icon name='link-alt' size='sm'></box-icon>
+                      </Link>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
+              <div className="col-sm-4 mb-3" key='1'>
+                <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                  
+                  <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                    <div className='mb-2'>
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" className="me-2" width={25} />
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
+                    </div>
+                    <div>
+                      <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>Project 3</h5>
+                    </div>
+                    <div className='mb-2'>
+                      <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper ligula a bibendum rutrum...
+                      </span>
+                    </div>
+                    <div>
+                      <Link to='/' className='text-decoration-none text-dark'>
+                        <box-icon name='link-alt' size='sm'></box-icon>
+                      </Link>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
