@@ -44,11 +44,11 @@ const Project = () => {
               loadingProject ? (
                 <Skeleton height={30} width='20%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
               ) : (
-                <h4 className={ darkMode ? 'text-white' : 'text-dark' + ' fw-normal fade-in' }>
+                <h4 className={ (darkMode ? 'text-white' : 'text-dark') + ' fw-normal fade-in' }>
                   <span className='me-2'>
-                    <box-icon name='circle' type='solid' color={ darkMode ? '#fff' : '#ffc107'}  style={{ verticalAlign: 'middle' }}></box-icon>
+                    <box-icon name='circle' type='solid' color={'#ffc107'}  style={{ verticalAlign: 'middle' }}></box-icon>
                   </span>
-                  <span className='bg-wardning'>Projects</span>
+                  <span>Projects</span>
                 </h4>
               )
             }
@@ -74,8 +74,8 @@ const Project = () => {
                     {
                       project.map(proj => (
                         <div className="col-sm-4 mb-3 fade-in" key={ proj.id }>
-                          <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
-                            <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                          <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-secondary' : 'bg-white')}>
+                            <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-secondary' : 'bg-white')}>
                               <div className='mb-2'>
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
                               </div>
@@ -89,8 +89,8 @@ const Project = () => {
                                 </span>
                               </div>
                               <div>
-                                <Link to='/' className='text-decoration-none text-dark'>
-                                  <box-icon name='link-alt' size='sm'></box-icon>
+                                <Link to='/' className='text-decoration-none'>
+                                  <box-icon name='link-alt' size='sm' color={ darkMode ? '#fff' : '#2b3137' }></box-icon>
                                 </Link>
                               </div>
                             </div>
