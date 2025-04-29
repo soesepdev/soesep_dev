@@ -44,8 +44,8 @@ img.profile-image {
 	height: auto;
 	padding:4px;
 	margin-top: 5px;
-	border-radius: 20px;
-	box-shadow: 6px 6px #367DB5;
+	border-radius: 12px;
+	/* box-shadow: 6px 6px #367DB5; */
 }
 
 @media (max-width: 992px) {
