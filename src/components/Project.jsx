@@ -84,7 +84,7 @@ const Project = () => {
                               </div>
                               <div className='mb-2'>
                                 <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
-                                  { proj.desciption }
+                                  { proj.desciption.slice(0, 80) + '...'}
                                   {/* { proj.description } */}
                                 </span>
                               </div>
