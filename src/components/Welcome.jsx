@@ -17,7 +17,6 @@ const Welcome = () => {
   const [social, setSocial] = useRecoilState(socialState);
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [loadingSocial, setLoadingSocial] = useState(true);
-  const imageProfile = './profile.jpg';
 
   const skeletonBaseColor = darkMode ? '#444' : '#ddd'; 
   const skeletonHighlightColor = darkMode ? '#555' : '#eee';
@@ -62,7 +61,7 @@ const Welcome = () => {
               loadingProfile ? (
                 <Skeleton height={200} width='100%' className='profile-image' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} />
               ) : (
-                <img src={imageProfile} className="profile-image fade-in" />
+                <img src={ profile.image } className="profile-image fade-in" />
               )
             }
           </div>
