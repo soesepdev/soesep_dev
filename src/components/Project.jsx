@@ -22,7 +22,7 @@ const Project = () => {
 
   const fetchProject = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/project`);
+      const response = await fetch(`https://api.soesepdev.my.id/project`);
       const result = await response.json();
       setProject(result.data);
     } catch (error) {

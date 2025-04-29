@@ -16,7 +16,7 @@ const Home = () => {
   
   const fetchProfile = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/profile`);
+      const response = await fetch(`https://api.soesepdev.my.id/profile`);
       const result = await response.json();
       setProfile(result.data);
     } catch (err) {

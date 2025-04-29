@@ -30,7 +30,7 @@ const Welcome = () => {
 
   const fetchSocial = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/social`);
+      const response = await fetch(`https://api.soesepdev.my.id/social`);
       const result = await response.json();
       setSocial(result.data);
     } catch (err) {
