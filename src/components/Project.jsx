@@ -25,7 +25,6 @@ const Project = () => {
       // const response = await fetch(`${process.env.REACT_APP_API_URL}/project`);
       const response = await fetch(`https://api.soesepdev.my.id/project`);
       const result = await response.json();
-      console.log(result)
       setProject(result.data);
     } catch (error) {
       console.error('Error fetching projects data:', error);

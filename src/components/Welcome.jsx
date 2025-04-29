@@ -11,8 +11,9 @@ import {
 
 const Welcome = () => {
   const darkMode = useRecoilValue(darkModeState);
-  const [profile, setProfile] = useRecoilState(profileState);
+  const profile = useRecoilValue(profileState);
   const [social, setSocial] = useRecoilState(socialState);
+  
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [loadingSocial, setLoadingSocial] = useState(true);
 
@@ -20,22 +21,12 @@ const Welcome = () => {
   const skeletonHighlightColor = darkMode ? '#555' : '#eee';
 
   useEffect(() => {
-    fetchProfile();
     fetchSocial();
-  }, []);
 
-  const fetchProfile = async () => {
-    try {
-      // const response = await fetch(`${process.env.REACT_APP_API_URL}/profile`);
-      const response = await fetch(`https://api.soesepdev.my.id/profile`);
-      const result = await response.json();
-      setProfile(result.data);
-    } catch (err) {
-      console.error('Error fetching profile data:', err);
-    } finally {
+    if (profile.name !== '') {
       setLoadingProfile(false);
     }
-  };
+  }, [profile]);
 
   const fetchSocial = async () => {
     try {
