@@ -6,7 +6,7 @@ export const darkModeState = atom({
 });
 
 export const profileState = atom({
-  key: 'profile',
+  key: 'profileState',
   default: {
     name: '',
     title: ''
@@ -14,11 +14,11 @@ export const profileState = atom({
 });
 
 export const socialState = atom({
-  key: 'social',
+  key: 'socialState',
   default: []
 });
 
 export const projectState = atom({
-  key: 'project',
+  key: 'projectState',
   default: []
 });
