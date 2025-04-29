@@ -22,8 +22,7 @@ const Project = () => {
 
   const fetchProject = async () => {
     try {
-      // const response = await fetch(`${process.env.REACT_APP_API_URL}/project`);
-      const response = await fetch(`https://api.soesepdev.my.id/project`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/project`);
       const result = await response.json();
       setProject(result.data);
     } catch (error) {
@@ -85,8 +84,7 @@ const Project = () => {
                               </div>
                               <div className='mb-2'>
                                 <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
-                                  { proj.desciption.slice(0, 80) + '...'}
-                                  {/* { proj.description } */}
+                                  { proj.description.slice(0, 80) + '...'}
                                 </span>
                               </div>
                               <div>
