@@ -84,7 +84,8 @@ const Project = () => {
                               </div>
                               <div className='mb-2'>
                                 <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
-                                  { proj.description }
+                                  { proj.desciption }
+                                  {/* { proj.description } */}
                                 </span>
                               </div>
                               <div>
