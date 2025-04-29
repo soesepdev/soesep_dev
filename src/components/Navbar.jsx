@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className="container header">
 
         <Link className="navbar-brand fw-semibold profile-name logo-text" to="/">
-          <span>{ profile.name }</span>
+          <span>{ profile.name ? profile.name : '. . .' }</span>
         </Link>
 
         <div className="">
