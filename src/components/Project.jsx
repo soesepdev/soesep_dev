@@ -76,7 +76,9 @@ const Project = () => {
                           <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-secondary' : 'bg-white')}>
                             <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-secondary' : 'bg-white')}>
                               <div className='mb-2'>
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
+                                { proj.stack && proj.stack.split(',').map((tech, i) => (
+                                  <img src={tech.trim()} className="me-2" width={25} key={i} />
+                                ))}
                               </div>
                               <div>
                                 <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>{ proj.title }</h5>
