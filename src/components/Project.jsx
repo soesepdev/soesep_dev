@@ -5,49 +5,34 @@ import Skeleton from 'react-loading-skeleton'
 
 import { 
   darkModeState, 
-  // categoryState, 
-  // projectState  
+  projectState  
 } from '../state/atoms';
 
 const Project = () => {
   const darkMode = useRecoilValue(darkModeState);
-  // const [category, setCategory] = useRecoilState(categoryState);
-  // const [project, setProject] = useRecoilState(projectState);
+  const [project, setProject] = useRecoilState(projectState);
+  const [loadingProject, setLoadingProject] = useState(true);
 
-  // const [categoryActive, setCategoryActive] = useState('*');
   const skeletonBaseColor = darkMode ? '#444' : '#ddd'; 
   const skeletonHighlightColor = darkMode ? '#555' : '#eee';
 
   useEffect(() => {
-    // fetchDataCategory();
-    // fetchDataProject();
+    fetchProject();
   }, []);
 
-  const fetchDataCategory = async () => {
+  const fetchProject = async () => {
     try {
-      const response = await fetch('https://api.abdisusep.my.id/api/categories');
-      const data = await response.json();
-      setCategory(data);
-    } catch (error) {
-      console.error('Error fetching category data:', error);
-    }
-  };
-
-  const fetchDataProject = async (id = '') => {
-    try {
-      const filter = id ? '' : '';
-      const response = await fetch(`https://api.abdisusep.my.id/api/projects${filter}`);
-      const data = await response.json();
-      setProject(data);
+      // const response = await fetch(`${process.env.REACT_APP_API_URL}/project`);
+      const response = await fetch(`https://api.soesepdev.my.id/project`);
+      const result = await response.json();
+      console.log(result)
+      setProject(result.data);
     } catch (error) {
       console.error('Error fetching projects data:', error);
+    } finally {
+      setLoadingProject(false);
     }
   };
-
-  const filterDataProject= async (id) => {
-    // setCategoryActive(id);
-    // fetchDataProject()
-  }
 
   return (
     <section className="project">
@@ -55,96 +40,67 @@ const Project = () => {
         <div className="row">
 
           <div className="col-lg-12 mb-3">
-            <h4 className={ darkMode ? 'text-white' : 'text-dark' + ' fw-normal'}>
-              {/* <box-icon name='folder' color={ darkMode ? '#fff' : '#2b3137'}></box-icon> */}
-              {/* <span className=''>Projects</span> <br /> */}
-              <Skeleton height={30} width='20%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
-            </h4>
+            {
+              loadingProject ? (
+                <Skeleton height={30} width='20%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
+              ) : (
+                <h4 className={ darkMode ? 'text-white' : 'text-dark' + ' fw-normal fade-in' }>
+                  <span className='me-2'>
+                    <box-icon name='circle' type='solid' color={ darkMode ? '#fff' : '#ffc107'}  style={{ verticalAlign: 'middle' }}></box-icon>
+                  </span>
+                  <span className='bg-wardning'>Projects</span>
+                </h4>
+              )
+            }
           </div>
+
           <div className="col-lg-12">
             <div className="row">
-
-              <div className="col-sm-4 mb-3" key='1'>
-                <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
-                {/* <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
-                  
-                  <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
-                    <div className='mb-2'>
-                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" className="me-2" width={25} />
-                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
+              {
+                loadingProject ? (
+                  <>
+                    <div className="col-sm-4 mb-3">
+                      <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
                     </div>
-                    <div>
-                      <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>Project 1</h5>
+                    <div className="col-sm-4 mb-3">
+                      <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
                     </div>
-                    <div className='mb-2'>
-                      <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper ligula a bibendum rutrum...
-                      </span>
+                    <div className="col-sm-4 mb-3">
+                      <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
                     </div>
-                    <div>
-                      <Link to='/' className='text-decoration-none text-dark'>
-                        <box-icon name='link-alt' size='sm'></box-icon>
-                      </Link>
-                    </div>
-                  </div>
-                  
-                </div> */}
-              </div>
-
-              <div className="col-sm-4 mb-3" key='1'>
-                <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
-                {/* <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
-                  
-                  <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
-                    <div className='mb-2'>
-                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" className="me-2" width={25} />
-                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
-                    </div>
-                    <div>
-                      <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>Project 1</h5>
-                    </div>
-                    <div className='mb-2'>
-                      <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper ligula a bibendum rutrum...
-                      </span>
-                    </div>
-                    <div>
-                      <Link to='/' className='text-decoration-none text-dark'>
-                        <box-icon name='link-alt' size='sm'></box-icon>
-                      </Link>
-                    </div>
-                  </div>
-                  
-                </div> */}
-              </div>
-
-              <div className="col-sm-4 mb-3" key='1'>
-                <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
-                {/* <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
-                  
-                  <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
-                    <div className='mb-2'>
-                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" className="me-2" width={25} />
-                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
-                    </div>
-                    <div>
-                      <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>Project </h5>
-                    </div>
-                    <div className='mb-2'>
-                      <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper ligula a bibendum rutrum...
-                      </span>
-                    </div>
-                    <div>
-                      <Link to='/' className='text-decoration-none text-dark'>
-                        <box-icon name='link-alt' size='sm'></box-icon>
-                      </Link>
-                    </div>
-                  </div>
-                  
-                </div> */}
-              </div>
-
+                  </>
+                ) : (
+                  <>
+                    {
+                      project.map(proj => (
+                        <div className="col-sm-4 mb-3 fade-in" key={ proj.id }>
+                          <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                            <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-dark' : 'bg-white')}>
+                              <div className='mb-2'>
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="me-2" width={25} />
+                              </div>
+                              <div>
+                                <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>{ proj.title }</h5>
+                              </div>
+                              <div className='mb-2'>
+                                <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
+                                  { proj.description }
+                                </span>
+                              </div>
+                              <div>
+                                <Link to='/' className='text-decoration-none text-dark'>
+                                  <box-icon name='link-alt' size='sm'></box-icon>
+                                </Link>
+                              </div>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      ))
+                    }
+                  </>
+                )
+              }  
             </div>
           </div>
         </div>
