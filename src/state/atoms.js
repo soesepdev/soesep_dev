@@ -8,7 +8,7 @@ export const darkModeState = atom({
 export const profileState = atom({
   key: 'profile',
   default: {
-    name: '',
+    name: '. . .',
     title: ''
   }
 });

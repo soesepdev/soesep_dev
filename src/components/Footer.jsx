@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { darkModeState } from '../state/atoms';
+
+import { 
+  darkModeState, 
+  profileState 
+} from '../state/atoms';
 
 const Footer = () => {
   const darkMode = useRecoilValue(darkModeState);
+  const profile = useRecoilValue(profileState);
 
   return (
     <section className="footer">
@@ -12,7 +17,7 @@ const Footer = () => {
         <div className="row">
 
           <div className="col-lg-12 mb-3 text-center">
-            <p className={ darkMode ? 'text-white' : 'text-dark'}>Created with <span className="cofee">☕︎</span> by <span className="fw-semibold profile-name">#soesep.dev</span></p>
+            <p className={ darkMode ? 'text-white' : 'text-dark'}>Created with <span className="cofee">☕︎</span> by <span className="fw-semibold profile-name">{ profile.name }</span></p>
           </div>
 
         </div>

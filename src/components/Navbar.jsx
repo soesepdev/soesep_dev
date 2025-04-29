@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { useRecoilState } from 'recoil';
-import { darkModeState } from '../state/atoms';
+import { 
+  darkModeState,
+  profileState
+} from '../state/atoms';
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
+  const profile = useRecoilValue(profileState);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -29,7 +33,7 @@ const Navbar = () => {
       <div className="container header">
 
         <Link className="navbar-brand fw-semibold profile-name logo-text" to="/">
-          #soesep.dev
+          <span>{ profile.name }</span>
         </Link>
 
         <div className="">
