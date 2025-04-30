@@ -169,7 +169,7 @@ const Project = () => {
           <div className='row mt-5 mb-3'>
             <div className='col-sm-12'>
                 <div>
-                  <button onClick={closeModal} className='btn btn-sm btn-danger'>. . / back</button>
+                  <button onClick={closeModal} className='btn btn-sm btn-danger'>. / back</button>
                   {/* <Skeleton
                     height={ 30 }
                     width="100%"
