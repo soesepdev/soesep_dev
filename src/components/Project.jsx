@@ -163,13 +163,29 @@ const Project = () => {
           isOpen={isModalOpen} 
           ariaHideApp={false} 
           onRequestClose={closeModal} 
-          closeTimeoutMS={200} 
+          closeTimeoutMS={100} 
           className='vh-100 bg-white rounded-0 fade-in'
         >
-            <div className='container'>
+            <div className='container mt-5'>
               <div className='row'> 
                 <div className='col-sm-12'>
                     <h4>Project Detail Modal Test</h4>
+                    <Skeleton
+                        height={100 }
+                        width="40%"
+                        baseColor={skeletonBaseColor}
+                        highlightColor={skeletonHighlightColor}
+                        borderRadius={12}
+                        className='mb-3'
+                      />
+                    <Skeleton
+                        height={200}
+                        width="100%"
+                        baseColor={skeletonBaseColor}
+                        highlightColor={skeletonHighlightColor}
+                        borderRadius={12}
+                        className='mb-3'
+                      />
                     <button onClick={closeModal} className='btn btn-sm btn-danger'>Close</button>
                 </div>
               </div>
