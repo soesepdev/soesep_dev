@@ -121,7 +121,7 @@ const Project = () => {
                             <div className="mb-2">
                               { proj.stack &&
                                 proj.stack.split(',').map((tech, i) => (
-                                  <img src={tech.trim()} className="me-2" width={25} key={i} />
+                                  <img src={tech.trim()} className="me-2" width={25} key={i} alt='stack' />
                                 ))
                               }
                             </div>
@@ -187,7 +187,7 @@ const Project = () => {
                   <>
                     { projectView.slide &&
                       projectView.slide.split(',').map((slide, i) => (
-                        <img src={slide.trim()} className="rounded w-100 mb-3" key={i} />
+                        <img src={slide.trim()} className="rounded w-100 mb-3" key={i} alt='slide' />
                       ))
                     }
                   </>
@@ -215,7 +215,7 @@ const Project = () => {
                     <div className='mb-2'>
                       { projectView.stack &&
                         projectView.stack.split(',').map((tech, i) => (
-                          <img src={tech.trim()} className="me-2" width={25} key={i} />
+                          <img src={tech.trim()} className="me-2" width={25} key={i} alt='tech' />
                         ))
                       }
                     </div>

@@ -49,7 +49,7 @@ const Welcome = () => {
               loadingProfile ? (
                 <Skeleton height={200} width='100%' className='profile-image' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
               ) : (
-                <img src={ profile.image } className="profile-image fade-in" />
+                <img src={ profile.image } className="profile-image fade-in" alt='profile'/>
               )
             }
           </div>
