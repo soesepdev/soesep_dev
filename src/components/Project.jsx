@@ -166,7 +166,7 @@ const Project = () => {
           closeTimeoutMS={100} 
           className='vh-100 bg-white rounded-0 fade-in'
         >
-            <div className='container mt-5'>
+            <div className='container py-4 px-4'>
               <div className='row'> 
                 <div className='col-sm-12'>
                     <h4>Project Detail Modal Test</h4>
