@@ -32,7 +32,6 @@ const Project = () => {
   };
 
   const openProject = (id) => {
-    console.log(id);
     setIsModalOpen(true); 
   };
 
@@ -160,36 +159,80 @@ const Project = () => {
       </section>
 
       <Modal 
-          isOpen={isModalOpen} 
-          ariaHideApp={false} 
-          onRequestClose={closeModal} 
-          closeTimeoutMS={100} 
-          className='vh-100 bg-white rounded-0 fade-in'
-        >
-            <div className='container py-4 px-4'>
-              <div className='row'> 
-                <div className='col-sm-12'>
-                    <h4>Project Detail Modal Test</h4>
-                    <Skeleton
-                        height={100 }
-                        width="40%"
-                        baseColor={skeletonBaseColor}
-                        highlightColor={skeletonHighlightColor}
-                        borderRadius={12}
-                        className='mb-3'
-                      />
-                    <Skeleton
-                        height={200}
-                        width="100%"
-                        baseColor={skeletonBaseColor}
-                        highlightColor={skeletonHighlightColor}
-                        borderRadius={12}
-                        className='mb-3'
-                      />
-                    <button onClick={closeModal} className='btn btn-sm btn-danger'>Close</button>
+        isOpen={isModalOpen} 
+        ariaHideApp={false} 
+        onRequestClose={closeModal} 
+        closeTimeoutMS={100} 
+        className='vh-100 bg-white rounded-0 fade-in'
+      >
+        <div className='container py-4 px-4'>
+          <div className='row mt-5 mb-3'>
+            <div className='col-sm-12'>
+                <div>
+                  <button onClick={closeModal} className='btn btn-sm btn-danger'>. . / back</button>
+                  {/* <Skeleton
+                    height={ 30 }
+                    width="100%"
+                    baseColor={skeletonBaseColor}
+                    highlightColor={skeletonHighlightColor}
+                    borderRadius={12}
+                    className='mb-3'
+                  /> */}
                 </div>
-              </div>
             </div>
+          </div>
+          <div className='row'> 
+            <div className='col-sm-6'>
+              <Skeleton
+                height={ 250 }
+                width="100%"
+                baseColor={skeletonBaseColor}
+                highlightColor={skeletonHighlightColor}
+                borderRadius={12}
+                className='mb-3'
+              />
+            </div>
+
+            <div className='col-sm-6'>
+              <Skeleton
+                height={ 25 }
+                width="60%"
+                baseColor={skeletonBaseColor}
+                highlightColor={skeletonHighlightColor}
+                borderRadius={12}
+                className='mb-3'
+              />
+
+              <Skeleton
+                height={ 20 }
+                width="100%"
+                baseColor={skeletonBaseColor}
+                highlightColor={skeletonHighlightColor}
+                borderRadius={12}
+                className='mb-1'
+              />
+              
+              <Skeleton
+                height={ 20 }
+                width="90%"
+                baseColor={skeletonBaseColor}
+                highlightColor={skeletonHighlightColor}
+                borderRadius={12}
+                className='mb-1'
+              />
+              
+              <Skeleton
+                height={ 20 }
+                width="100%"
+                baseColor={skeletonBaseColor}
+                highlightColor={skeletonHighlightColor}
+                borderRadius={12}
+                className='mb-1'
+              />
+
+            </div>
+          </div>
+        </div>
       </Modal>
     </>
   );
