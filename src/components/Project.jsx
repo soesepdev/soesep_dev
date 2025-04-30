@@ -11,6 +11,8 @@ const Project = () => {
   const [project, setProject] = useRecoilState(projectState);
   const [loadingProject, setLoadingProject] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [projectView, setProjectView] = useState([]); 
+
 
   const skeletonBaseColor = darkMode ? '#444' : '#ddd'; 
   const skeletonHighlightColor = darkMode ? '#555' : '#eee';
@@ -31,12 +33,14 @@ const Project = () => {
     }
   };
 
-  const openProject = (id) => {
+  const openProject = (data) => {
     setIsModalOpen(true); 
+    setProjectView(data);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setProjectView([]);
   };
 
   return (
@@ -115,10 +119,11 @@ const Project = () => {
                             }
                           >
                             <div className="mb-2">
-                              {proj.stack &&
+                              { proj.stack &&
                                 proj.stack.split(',').map((tech, i) => (
                                   <img src={tech.trim()} className="me-2" width={25} key={i} />
-                                ))}
+                                ))
+                              }
                             </div>
                             <div>
                               <h5
@@ -136,7 +141,7 @@ const Project = () => {
                             </div>
                             <div>
                               <Link
-                                onClick={() => openProject(proj.id)}
+                                onClick={() => openProject(proj)}
                                 className="text-decoration-none"
                               >
                                 <box-icon
@@ -166,21 +171,15 @@ const Project = () => {
         className='vh-100 bg-white rounded-0 fade-in'
       >
         <div className='container py-4 px-4'>
+          
           <div className='row mt-5 mb-3'>
             <div className='col-sm-12'>
                 <div>
                   <button onClick={closeModal} className='btn btn-sm btn-danger'>. / back</button>
-                  {/* <Skeleton
-                    height={ 30 }
-                    width="100%"
-                    baseColor={skeletonBaseColor}
-                    highlightColor={skeletonHighlightColor}
-                    borderRadius={12}
-                    className='mb-3'
-                  /> */}
                 </div>
             </div>
           </div>
+
           <div className='row'> 
             <div className='col-sm-6'>
               <Skeleton
@@ -194,41 +193,66 @@ const Project = () => {
             </div>
 
             <div className='col-sm-6'>
-              <Skeleton
-                height={ 25 }
-                width="60%"
-                baseColor={skeletonBaseColor}
-                highlightColor={skeletonHighlightColor}
-                borderRadius={12}
-                className='mb-3'
-              />
+              {
+                projectView.title ? (
+                  <>
+                    <h4>{ projectView.title }</h4>
+                    <div className='mb-2'>
+                      { projectView.stack &&
+                        projectView.stack.split(',').map((tech, i) => (
+                          <img src={tech.trim()} className="me-2" width={25} key={i} />
+                        ))
+                      }
+                    </div>
+                    <div className='mb-2'>
+                      { projectView.description }
+                    </div>
+                    <div>
+                      <Link to={ projectView.url } className='btn btn-secondary btn-sm'>demo</Link>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Skeleton
+                      height={ 25 }
+                      width="60%"
+                      baseColor={skeletonBaseColor}
+                      highlightColor={skeletonHighlightColor}
+                      borderRadius={12}
+                      className='mb-3'
+                    />
 
-              <Skeleton
-                height={ 20 }
-                width="100%"
-                baseColor={skeletonBaseColor}
-                highlightColor={skeletonHighlightColor}
-                borderRadius={12}
-                className='mb-1'
-              />
+                    <Skeleton
+                      height={ 20 }
+                      width="100%"
+                      baseColor={skeletonBaseColor}
+                      highlightColor={skeletonHighlightColor}
+                      borderRadius={12}
+                      className='mb-1'
+                    />
+                    
+                    <Skeleton
+                      height={ 20 }
+                      width="90%"
+                      baseColor={skeletonBaseColor}
+                      highlightColor={skeletonHighlightColor}
+                      borderRadius={12}
+                      className='mb-1'
+                    />
+                    
+                    <Skeleton
+                      height={ 20 }
+                      width="100%"
+                      baseColor={skeletonBaseColor}
+                      highlightColor={skeletonHighlightColor}
+                      borderRadius={12}
+                      className='mb-1'
+                    />
+                  </>
+                )
+              }
+
               
-              <Skeleton
-                height={ 20 }
-                width="90%"
-                baseColor={skeletonBaseColor}
-                highlightColor={skeletonHighlightColor}
-                borderRadius={12}
-                className='mb-1'
-              />
-              
-              <Skeleton
-                height={ 20 }
-                width="100%"
-                baseColor={skeletonBaseColor}
-                highlightColor={skeletonHighlightColor}
-                borderRadius={12}
-                className='mb-1'
-              />
 
             </div>
           </div>
