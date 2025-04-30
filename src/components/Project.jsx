@@ -168,7 +168,7 @@ const Project = () => {
         ariaHideApp={false} 
         onRequestClose={closeModal} 
         closeTimeoutMS={100} 
-        className='vh-100 bg-white rounded-0 fade-in'
+        className={ 'vh-100 rounded-0 fade-in ' + (darkMode ? 'bg-dark' : 'bg-white') }
       >
         <div className='container py-4 px-4'>
           
@@ -196,7 +196,7 @@ const Project = () => {
               {
                 projectView.title ? (
                   <>
-                    <h4>{ projectView.title }</h4>
+                    <h4 className={ darkMode ? 'text-white' : 'text-dark' }>{ projectView.title }</h4>
                     <div className='mb-2'>
                       { projectView.stack &&
                         projectView.stack.split(',').map((tech, i) => (
@@ -204,7 +204,7 @@ const Project = () => {
                         ))
                       }
                     </div>
-                    <div className='mb-2'>
+                    <div className={ (darkMode ? 'text-white' : 'text-dark') + ' mb-2' }>
                       { projectView.description }
                     </div>
                     <div>
