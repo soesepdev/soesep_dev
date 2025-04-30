@@ -182,14 +182,29 @@ const Project = () => {
 
           <div className='row'> 
             <div className='col-sm-6'>
-              <Skeleton
-                height={ 250 }
-                width="100%"
-                baseColor={skeletonBaseColor}
-                highlightColor={skeletonHighlightColor}
-                borderRadius={12}
-                className='mb-3'
-              />
+              {
+                projectView.slide ? (
+                  <>
+                    { projectView.slide &&
+                      projectView.slide.split(',').map((slide, i) => (
+                        <img src={slide.trim()} className="rounded w-100 mb-3" key={i} />
+                      ))
+                    }
+                  </>
+                ) : (
+                  <>
+                    <Skeleton
+                      height={ 250 }
+                      width="100%"
+                      baseColor={skeletonBaseColor}
+                      highlightColor={skeletonHighlightColor}
+                      borderRadius={12}
+                      className='mb-3'
+                    />
+                  </>
+                )
+              }
+              
             </div>
 
             <div className='col-sm-6'>
