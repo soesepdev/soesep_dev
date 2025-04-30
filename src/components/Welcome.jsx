@@ -96,7 +96,7 @@ const Welcome = () => {
                       {
                         social.map(soc => (
                           <span className="me-2 fade-in" key={ soc.id }>
-                            <Link to={ soc.url } target='_blank'>
+                            <Link to={ soc.url } target='_blank' aria-label={ soc.name }>
                               <box-icon type={ soc.type } name={ soc.icon } size='md' color={ darkMode ? '#ffffff' : soc.color }></box-icon>
                             </Link>
                           </span>
