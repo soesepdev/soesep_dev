@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import Skeleton from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton';
+import Modal from 'react-modal';
 
-import { 
-  darkModeState, 
-  projectState  
-} from '../state/atoms';
+import { darkModeState, projectState } from '../state/atoms';
 
 const Project = () => {
   const darkMode = useRecoilValue(darkModeState);
   const [project, setProject] = useRecoilState(projectState);
   const [loadingProject, setLoadingProject] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   const skeletonBaseColor = darkMode ? '#444' : '#ddd'; 
   const skeletonHighlightColor = darkMode ? '#555' : '#eee';
@@ -32,81 +31,152 @@ const Project = () => {
     }
   };
 
-  return (
-    <section className="project">
-      <div className="container">
-        <div className="row">
+  const openProject = (id) => {
+    console.log(id);
+    setIsModalOpen(true); 
+  };
 
-          <div className="col-lg-12 mb-3">
-            {
-              loadingProject ? (
-                <Skeleton height={30} width='20%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <>
+      <section className="project">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 mb-3">
+              {loadingProject ? (
+                <Skeleton
+                  height={30}
+                  width="20%"
+                  baseColor={skeletonBaseColor}
+                  highlightColor={skeletonHighlightColor}
+                  borderRadius={12}
+                />
               ) : (
-                <h4 className={ (darkMode ? 'text-white' : 'text-dark') + ' fw-normal fade-in' }>
-                  <span className='me-2'>
-                    <box-icon name='circle' type='solid' color={'#ffc107'}  style={{ verticalAlign: 'middle' }}></box-icon>
+                <h4 className={darkMode ? 'text-white' : 'text-dark' + ' fw-normal fade-in'}>
+                  <span className="me-2">
+                    <box-icon
+                      name="circle"
+                      type="solid"
+                      color={'#ffc107'}
+                      style={{ verticalAlign: 'middle' }}
+                    ></box-icon>
                   </span>
                   <span>Projects</span>
                 </h4>
-              )
-            }
-          </div>
+              )}
+            </div>
 
-          <div className="col-lg-12">
-            <div className="row">
-              {
-                loadingProject ? (
+            <div className="col-lg-12">
+              <div className="row">
+                {loadingProject ? (
                   <>
                     <div className="col-sm-4 mb-3">
-                      <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
+                      <Skeleton
+                        height={200}
+                        width="100%"
+                        baseColor={skeletonBaseColor}
+                        highlightColor={skeletonHighlightColor}
+                        borderRadius={12}
+                      />
                     </div>
                     <div className="col-sm-4 mb-3">
-                      <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
+                      <Skeleton
+                        height={200}
+                        width="100%"
+                        baseColor={skeletonBaseColor}
+                        highlightColor={skeletonHighlightColor}
+                        borderRadius={12}
+                      />
                     </div>
                     <div className="col-sm-4 mb-3">
-                      <Skeleton height={200} width='100%' baseColor={skeletonBaseColor} highlightColor={skeletonHighlightColor} borderRadius={12} />
+                      <Skeleton
+                        height={200}
+                        width="100%"
+                        baseColor={skeletonBaseColor}
+                        highlightColor={skeletonHighlightColor}
+                        borderRadius={12}
+                      />
                     </div>
                   </>
                 ) : (
                   <>
-                    {
-                      project.map(proj => (
-                        <div className="col-sm-4 mb-3 fade-in" key={ proj.id }>
-                          <div className={'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-secondary' : 'bg-white')}>
-                            <div className={'card-body px-0 rounded ' + (darkMode ? 'bg-secondary' : 'bg-white')}>
-                              <div className='mb-2'>
-                                { proj.stack && proj.stack.split(',').map((tech, i) => (
+                    {project.map((proj) => (
+                      <div className="col-sm-4 mb-3 fade-in" key={proj.id}>
+                        <div
+                          className={
+                            'card border-0 shadow rounded px-3 ' + (darkMode ? 'bg-secondary' : 'bg-white')
+                          }
+                        >
+                          <div
+                            className={
+                              'card-body px-0 rounded ' + (darkMode ? 'bg-secondary' : 'bg-white')
+                            }
+                          >
+                            <div className="mb-2">
+                              {proj.stack &&
+                                proj.stack.split(',').map((tech, i) => (
                                   <img src={tech.trim()} className="me-2" width={25} key={i} />
                                 ))}
-                              </div>
-                              <div>
-                                <h5 className={ 'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark') }>{ proj.title }</h5>
-                              </div>
-                              <div className='mb-2'>
-                                <span className={ 'card-text ' + (darkMode ? 'text-white' : 'text-dark') }>
-                                  { proj.description.slice(0, 80) + '...'}
-                                </span>
-                              </div>
-                              <div>
-                                <Link to='/' className='text-decoration-none'>
-                                  <box-icon name='link-alt' size='sm' color={ darkMode ? '#fff' : '#2b3137' }></box-icon>
-                                </Link>
-                              </div>
                             </div>
-                            
+                            <div>
+                              <h5
+                                className={'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark')}
+                              >
+                                {proj.title}
+                              </h5>
+                            </div>
+                            <div className="mb-2">
+                              <span
+                                className={'card-text ' + (darkMode ? 'text-white' : 'text-dark')}
+                              >
+                                {proj.description.slice(0, 80) + '...'}
+                              </span>
+                            </div>
+                            <div>
+                              <Link
+                                onClick={() => openProject(proj.id)}
+                                className="text-decoration-none"
+                              >
+                                <box-icon
+                                  name="link-alt"
+                                  size="sm"
+                                  color={darkMode ? '#fff' : '#2b3137'}
+                                ></box-icon>
+                              </Link>
+                            </div>
                           </div>
                         </div>
-                      ))
-                    }
+                      </div>
+                    ))}
                   </>
-                )
-              }  
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  )
-}
+      </section>
+
+      <Modal 
+          isOpen={isModalOpen} 
+          ariaHideApp={false} 
+          onRequestClose={closeModal} 
+          closeTimeoutMS={200} 
+          className='vh-100 bg-white rounded-0 fade-in'
+        >
+            <div className='container'>
+              <div className='row'> 
+                <div className='col-sm-12'>
+                    <h4>Project Detail Modal Test</h4>
+                    <button onClick={closeModal} className='btn btn-sm btn-danger'>Close</button>
+                </div>
+              </div>
+            </div>
+      </Modal>
+    </>
+  );
+};
 
 export default Project;
