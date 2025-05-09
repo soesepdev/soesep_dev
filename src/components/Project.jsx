@@ -143,6 +143,7 @@ const Project = () => {
                               <Link
                                 onClick={() => openProject(proj)}
                                 className="text-decoration-none"
+                                aria-label="Open Project"
                               >
                                 <box-icon
                                   name="link-alt"

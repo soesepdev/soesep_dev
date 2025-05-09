@@ -39,7 +39,7 @@ const Navbar = () => {
         <div className="">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <button className="nav-link dark-mode" onClick={toggleDarkMode}>
+              <button className="nav-link dark-mode" onClick={toggleDarkMode} aria-label="Dark mode">
                 {
                   darkMode ?
                   <box-icon type='solid' name='sun' color='#fff'></box-icon> :
