@@ -63,7 +63,7 @@ const Welcome = () => {
                     <>
                       <span className="me-2">👋</span>
                       <span className={ (darkMode ? 'text-white' : 'text-dark') + ' fw-normal fade-in'}>Hello there, i'm </span>
-                      <span className="fw-normal profile-name fade-in">{profile.name}</span>
+                      <span className={ (darkMode ? 'text-info' : 'text-primary') + ' fw-normal fade-in'}>{profile.name}</span>
                     </>
                   )
                 }

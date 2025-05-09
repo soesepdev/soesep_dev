@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className="container header">
 
         <Link className="navbar-brand fw-semibold profile-name logo-text" to="/">
-          <span>{ profile.name ? profile.name : '. . .' }</span>
+          <span className={ (darkMode ? 'text-info' : 'text-primary') }>{ profile.name ? profile.name : '. . .' }</span>
         </Link>
 
         <div className="">
