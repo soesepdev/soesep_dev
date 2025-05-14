@@ -58,7 +58,7 @@ const Project = () => {
                   borderRadius={12}
                 />
               ) : (
-                <h4 className={darkMode ? 'text-white' : 'text-dark' + ' fw-normal fade-in'}>
+                <h1 className={ (darkMode ? 'text-white' : 'text-dark') + ' fw-normal fade-in fs-4'}>
                   <span className="me-2">
                     <box-icon
                       name="circle"
@@ -68,7 +68,7 @@ const Project = () => {
                     ></box-icon>
                   </span>
                   <span>Projects</span>
-                </h4>
+                </h1>
               )}
             </div>
 
