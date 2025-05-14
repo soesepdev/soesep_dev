@@ -79,8 +79,8 @@ const Welcome = () => {
                     </>
                   ) : (
                     <>
-                      <span className="fw-normal me-2 fs-5 fade-in">I'm a</span>
-                      <span className="fw-normal me-2 fs-5 bg-warning fade-in">{profile.title}</span>
+                      <span className="fw-normal me-1 fs-5 fade-in">I'm a</span>
+                      <span className="fw-normal me-1 fs-5 bg-warning fade-in text-dark px-1">{profile.title}</span>
                       <span className="fw-normal fs-5 fade-in">{profile.description}</span>
                     </>
                   )
