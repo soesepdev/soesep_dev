@@ -54,7 +54,7 @@ const Welcome = () => {
             }
           </div>
           <div className="col-lg-9 col-12">
-            <div className='mt-4'>
+            <div className='mt-3'>
               <h1 className="m-0 mt-2 mb-3 fs-3">
                 {
                   loadingProfile ? (
@@ -69,7 +69,7 @@ const Welcome = () => {
                 }
               </h1>
 
-              <h4 className={ (darkMode ? 'text-white' : 'text-dark') + ' mb-2'}>
+              <h2 className={ (darkMode ? 'text-white' : 'text-dark') + ' mb-2'}>
                 {
                   loadingProfile ? (
                     <>
@@ -85,7 +85,7 @@ const Welcome = () => {
                     </>
                   )
                 }
-              </h4>
+              </h2>
 
               <div>
                 {
