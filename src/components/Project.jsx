@@ -126,11 +126,11 @@ const Project = () => {
                               }
                             </div>
                             <div>
-                              <h5
-                                className={'card-title fw-normal ' + (darkMode ? 'text-white' : 'text-dark')}
+                              <h1
+                                className={'card-title fw-normal fs-5 ' + (darkMode ? 'text-white' : 'text-dark')}
                               >
                                 {proj.title}
-                              </h5>
+                              </h1>
                             </div>
                             <div className="mb-2">
                               <span
