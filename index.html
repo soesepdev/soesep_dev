@@ -13,11 +13,10 @@
 
     <title>Welcome</title>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Preload Google Fonts agar non-blocking -->
     <link
       rel="preload"
       as="style"
@@ -31,9 +30,21 @@
         type="text/css"
       />
     </noscript>
+    </style>
   </head>
   <body>
     <div id="root"></div>
+
+    <script>
+      function loadCSS(href) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      }
+      loadCSS('/assets/index-Cp0XTL1D.css');
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
