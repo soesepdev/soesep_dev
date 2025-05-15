@@ -5,7 +5,6 @@ import AnimatedCursor from "react-animated-cursor"
 import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-loading-skeleton/dist/skeleton.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'boxicons'
 import './index.css'
 
