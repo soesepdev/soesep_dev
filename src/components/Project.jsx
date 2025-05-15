@@ -216,7 +216,7 @@ const Project = () => {
                     <div className='mb-2'>
                       { projectView.stack &&
                         projectView.stack.split(',').map((tech, i) => (
-                          <img src={tech.trim()} className="me-2" width={25} key={i} alt='tech' />
+                          <img src={tech.trim()} className="me-2" style={{ width: 25, height: 'auto' }} key={i} alt='tech' />
                         ))
                       }
                     </div>
