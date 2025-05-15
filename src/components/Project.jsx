@@ -121,7 +121,7 @@ const Project = () => {
                             <div className="mb-2">
                               { proj.stack &&
                                 proj.stack.split(',').map((tech, i) => (
-                                  <img src={tech.trim()} className="me-2" width={25} key={i} alt='stack' />
+                                  <img src={tech.trim()} className="me-2" width={25} height={25} key={i} alt='stack' />
                                 ))
                               }
                             </div>
