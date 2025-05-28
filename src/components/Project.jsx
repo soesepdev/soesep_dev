@@ -224,7 +224,14 @@ const Project = () => {
                       { projectView.description }
                     </div>
                     <div>
-                      <Link to={ projectView.url } className='btn btn-secondary btn-sm'>demo</Link>
+                      <a
+                        href={projectView.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-secondary btn-sm"
+                      >
+                        Show
+                      </a>
                     </div>
                   </>
                 ) : (
@@ -267,8 +274,6 @@ const Project = () => {
                   </>
                 )
               }
-
-              
 
             </div>
           </div>
